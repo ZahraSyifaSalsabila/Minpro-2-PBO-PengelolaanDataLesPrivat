@@ -1,12 +1,15 @@
 package main;
 
 import java.util.Scanner;
-import model.LayananLesPrivat;
+import Controller.LayananLesPrivat;
+import Controller.LesPrivatController;
 
 public class MainApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
         LayananLesPrivat layanan = new LayananLesPrivat(scanner);
+        LesPrivatController controller = new LesPrivatController(layanan);
 
         boolean berjalan = true;
 
@@ -19,16 +22,38 @@ public class MainApp {
             System.out.println("5. Keluar");
             System.out.print("Pilih menu (1-5): ");
 
+            while (!scanner.hasNextInt()) {
+                System.out.print("Input harus berupa angka, masukkan lagi: ");
+                scanner.nextLine();
+            }
+
             int pilihan = scanner.nextInt();
             scanner.nextLine();
 
             switch (pilihan) {
-                case 1 -> layanan.tambahData();
-                case 2 -> layanan.tampilkanData();
-                case 3 -> layanan.updateData();
-                case 4 -> layanan.hapusData();
-                case 5 -> berjalan = false;
-                default -> System.out.println("Pilihan tidak valid!");
+                case 1:
+                    controller.tambahData();
+                    break;
+
+                case 2:
+                    controller.tampilkanData();
+                    break;
+
+                case 3:
+                    controller.updateData();
+                    break;
+
+                case 4:
+                    controller.hapusData();
+                    break;
+
+                case 5:
+                    berjalan = false;
+                    System.out.println("Program selesai.");
+                    break;
+
+                default:
+                    System.out.println("Pilihan tidak valid!");
             }
         }
 

@@ -1,20 +1,36 @@
 package model;
 
-public class Tutor {
-    public String idTutor;
-    public String nama;
-    public String keahlian;
-    public String noTelepon;
+public class Tutor extends Pengguna {
+    private String keahlian;
+    private String noTelepon;
 
-    public Tutor(String idTutor, String nama, String keahlian, String noTelepon) {
-        this.idTutor = idTutor;
-        this.nama = nama;
+    public Tutor(int id, String nama, String keahlian, String noTelepon) {
+        super(id, nama);
         this.keahlian = keahlian;
         this.noTelepon = noTelepon;
     }
 
+    public String getKeahlian() {
+        return keahlian;
+    }
+
+    public void setKeahlian(String keahlian) {
+        this.keahlian = keahlian;
+    }
+
+    public String getNoTelepon() {
+        return noTelepon;
+    }
+
+    public void setNoTelepon(String noTelepon) {
+        this.noTelepon = noTelepon;
+    }
+
+    @Override
     public void tampilkanInfo() {
-        System.out.printf("%-8s | %-20s | %-20s | %-15s\n",
-                idTutor, nama, keahlian, noTelepon);
+        System.out.println("ID              : " + getId());
+        System.out.println("Nama            : " + getNama());
+        System.out.println("Keahlian        : " + keahlian);
+        System.out.println("No. Telepon     : " + noTelepon);
     }
 }

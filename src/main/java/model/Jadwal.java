@@ -1,13 +1,13 @@
 package model;
 
 public class Jadwal {
-    public String idJadwal;
-    public String idSiswa;
-    public String idTutor;
-    public String hari;
-    public String jam;
+    private int idJadwal;
+    private int idSiswa;
+    private int idTutor;
+    private String hari;
+    private String jam;
 
-    public Jadwal(String idJadwal, String idSiswa, String idTutor, String hari, String jam) {
+    public Jadwal(int idJadwal, int idSiswa, int idTutor, String hari, String jam) {
         this.idJadwal = idJadwal;
         this.idSiswa = idSiswa;
         this.idTutor = idTutor;
@@ -15,8 +15,51 @@ public class Jadwal {
         this.jam = jam;
     }
 
+    public int getIdJadwal() {
+        return idJadwal;
+    }
+
+    public void setIdJadwal(int idJadwal) {
+        this.idJadwal = idJadwal;
+    }
+
+    public int getIdSiswa() {
+        return idSiswa;
+    }
+
+    public void setIdSiswa(int idSiswa) {
+        this.idSiswa = idSiswa;
+    }
+
+    public int getIdTutor() {
+        return idTutor;
+    }
+
+    public void setIdTutor(int idTutor) {
+        this.idTutor = idTutor;
+    }
+
+    public String getHari() {
+        return hari;
+    }
+
+    public void setHari(String hari) {
+        this.hari = hari;
+    }
+
+    public String getJam() {
+        return jam;
+    }
+
+    public void setJam(String jam) {
+        this.jam = jam;
+    }
+
     public void tampilkanInfo(String namaSiswa, String namaTutor) {
-        System.out.printf("%-8s | %-20s | %-20s | %-12s | %-10s\n",
-                idJadwal, namaSiswa, namaTutor, hari, jam);
+        System.out.println("ID              : " + idJadwal);
+        System.out.println("Siswa           : " + namaSiswa);
+        System.out.println("Tutor           : " + namaTutor);
+        System.out.println("Hari            : " + hari);
+        System.out.println("Jam             : " + jam);
     }
 }
