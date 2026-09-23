@@ -1,11 +1,8 @@
 package Controller;
 
-import model.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import java.util.ArrayList;
-import java.util.Scanner;
 import model.Jadwal;
 import model.Siswa;
 import model.Tutor;
@@ -25,7 +22,6 @@ public class LayananLesPrivat {
         daftarJadwal.add(new Jadwal(1, 1, 1, "Senin", "16:00"));
     }
 
-    // --- METHOD VALIDASI ID UNIK ---
     private boolean isIdSiswaAda(int id) {
         for (Siswa s : daftarSiswa) {
             if (s.getId() == id) {
@@ -115,8 +111,18 @@ public class LayananLesPrivat {
             System.out.print("ID Siswa: ");
             int siswa = inputAngka();
 
+            while (!isIdSiswaAda(siswa)) {
+                System.out.print("ID Siswa belum tersedia! Masukkan ID lain: ");
+                siswa = inputAngka();
+            }
+
             System.out.print("ID Tutor: ");
             int tutor = inputAngka();
+
+            while (!isIdTutorAda(tutor)) {
+                System.out.print("ID Tutor belum tersedia! Masukkan ID lain: ");
+                tutor = inputAngka();
+            }
 
             System.out.print("Hari: ");
             String hari = inputTeks();
@@ -232,10 +238,23 @@ public class LayananLesPrivat {
             for (Jadwal j : daftarJadwal) {
                 if (j.getIdJadwal() == id) {
                     System.out.print("ID Siswa: ");
-                    j.setIdSiswa(inputAngka());
+                    int siswa = inputAngka();
+
+                    while (!isIdSiswaAda(siswa)) {
+                        System.out.print("ID Siswa belum tersedia! Masukkan ID lain: ");
+                        siswa = inputAngka();
+                    }
 
                     System.out.print("ID Tutor: ");
-                    j.setIdTutor(inputAngka());
+                    int tutor = inputAngka();
+
+                    while (!isIdTutorAda(tutor)) {
+                        System.out.print("ID Tutor belum tersedia! Masukkan ID lain: ");
+                        tutor = inputAngka();
+                    }
+
+                    j.setIdSiswa(siswa);
+                    j.setIdTutor(tutor);
 
                     System.out.print("Hari: ");
                     j.setHari(inputTeks());
